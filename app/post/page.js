@@ -1,12 +1,13 @@
 // "use client";
 
 import { fetchData, fetchDataFromServer } from "@/lib/axios";
+import ClientPosts from "../components/posts/ClientPosts";
 // import { useEffect } from "react";
 // import Loading from "./Loading";
 
 const Post = async() => {
-    const data = await fetchDataFromServer("/posts?_page=2&_limit=2");
-    // console.log("post: ", data);
+    const data = await fetchDataFromServer("/posts?_page=1&_limit=2");
+    console.log("post: ", data);
 
     // if(isLoading){
     //     return <Loading />
@@ -19,6 +20,8 @@ const Post = async() => {
                     <h1 key={item.id}>{item.title}</h1>
                 ))}
             </div>
+            <ClientPosts />
+
         </div>
     );
 };
