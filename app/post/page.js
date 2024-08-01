@@ -1,27 +1,34 @@
-// "use client";
-
-import { fetchData, fetchDataFromServer } from "@/lib/axios";
+import { fetchDataFromServer } from "@/lib/axios";
 import ClientPosts from "../components/posts/ClientPosts";
-// import { useEffect } from "react";
-// import Loading from "./Loading";
+import Link from "next/link";
 
-const Post = async() => {
+export async function generateMetadata({ params }) {
+    // read route params
+
+    return {
+        title: "Post Page: ",
+        description:
+            "sequi sint nihil reprehenderit dolor beatae ea dolores neque",
+    };
+}
+
+const Post = async () => {
     const data = await fetchDataFromServer("/posts?_page=1&_limit=2");
-    console.log("post: ", data);
 
-    // if(isLoading){
-    //     return <Loading />
-    // }
     return (
         <div className="min-h-screen">
             <h1 className="text-xl text-center">Post Page</h1>
             <div>
-                {data?.map((item) => (
-                    <h1 key={item.id}>{item.title}</h1>
+                {data.map((item) => (
+                    <Link
+                        key={item?.id}
+                        href={`http://localhost:3000/post/${item?.id}`}
+                    >
+                        <h1>{item.title}</h1>
+                    </Link>
                 ))}
             </div>
             <ClientPosts />
-
         </div>
     );
 };

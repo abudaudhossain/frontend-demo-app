@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/app/post/loading";
 import { instance } from "@/lib/api/clientSideAPI";
 import React, { useState } from "react";
 
@@ -22,6 +23,9 @@ const ClientPosts = () => {
     };
 
     console.log(data, error, isLoading);
+    if (isLoading) {
+        return <Loading />;
+    }
 
     return (
         <div>
