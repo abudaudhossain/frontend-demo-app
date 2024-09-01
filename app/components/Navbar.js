@@ -16,6 +16,10 @@ const menuItems = [
     },
     
     {
+        label: "Animation",
+        route: "/animation",
+    },
+    {
         label: "Login",
         route: "/login",
     },
@@ -23,14 +27,14 @@ const menuItems = [
 
 const Navbar = () => {
     return (
-        <nav>
+        <nav className="pt-4">
             {menuItems.map((item, index) => (
                 <Link key={index} href={item.route} className="p-2">
                     {item.label}
                 </Link>
             ))}
 
-            <div className="py-0.5 bg-neutral-500"></div>
+            <div className="py-0.5 bg-neutral-500 mt-3"></div>
         </nav>
     );
 };
