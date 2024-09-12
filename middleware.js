@@ -6,6 +6,9 @@ import { routing } from "./i18n/routing";
 const intlMiddleware = createMiddleware(routing);
 
 export async function middleware(request) {
+    const acceptLanguage = request.headers.get('accept-language');
+    console.log("Accept-Language header: ", acceptLanguage);
+
     // Run the internationalization middleware to process i18n routes
     const intlResponse = intlMiddleware(request);
 
